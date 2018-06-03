@@ -1,0 +1,42 @@
+<html>
+	<head>
+	Hi
+	</head>
+	
+	<body>
+		<div id = 'myDiv'>
+				
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+	
+	
+	
+	
+		var weather = {    
+	update: function() {
+		
+		$.get("https://cricapi.com/api/cricket?apikey=fSxQ2m58KwaVEWECGHajZPrBZR62", function(matchdata) {
+			matchdata.data.forEach(function(md) {
+				//console.log(md.description + " - " + md.unique_id );
+				$('#myDiv').append(md.description + ' - ' + md.unique_id + '<br>');
+				//$("#myDiv").html(md.description + ' - ' + md.unique_id + '<br>');
+			});
+		});
+	},
+    init: function() {
+      weather.update();
+      setInterval(weather.update, 60000);
+    }
+};
+
+weather.init();
+
+
+	
+	</script>
+	
+	
+</html>
